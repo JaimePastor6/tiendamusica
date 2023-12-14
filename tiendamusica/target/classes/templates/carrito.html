@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+<head>
+    <title>Carrito</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+    <script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+</head>
+
+<body>
+    <div th:replace="fragments/header :: header"></div>
+    <div class="pagina">
+        <h2 class="text-center">Carrito</h2>
+        <div class="container">
+
+            <ul class="list-unstyled">
+                <li th:each="producto : ${carrito}" class="row">
+                    <div class="col-md-2">
+                        <img th:src="@{'/producto/imagenes/' + ${producto.imagen}}" class="producto-imagen"
+                            alt="Imagen del producto">
+                    </div>
+                    <div class="col-md-10">
+                        <strong th:text="${producto.nombre}"></strong>
+                        <p th:text="${producto.descripcion}"></p>
+                        <p th:text="${producto.precio}"></p>
+                    </div>
+                </li>
+            </ul>
+            <div class="mt-4">
+                <strong>Total:</strong> <span th:text="${total}"></span>
+                <div th:if="${carrito != null && !carrito.isEmpty()}">
+                     <a th:href="@{/pedido/comprar}"
+                                    class="btn btn-primary mt-2">Comprar</a>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+    <div th:replace="fragments/footer :: footer"></div>
+
+</html>

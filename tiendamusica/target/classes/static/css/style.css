@@ -1,0 +1,83 @@
+.navbar {
+    padding: 0 10px;
+  }
+  
+  *.icon-dark {
+    color: grey;
+  }
+  
+  .message {
+    position: absolute;
+    top: 40px;
+    right:5px;
+  }
+  
+  .search {
+    position: relative;
+  }
+  
+  .search input {
+    text-indent: 25px;
+    border: 2px solid #d6d4d4;
+  }
+  
+  .search input:focus {
+    box-shadow: none;
+    border: 1px solid grey;
+  }
+  
+  .search .fa-search {
+    position: absolute;
+    top: 12px;
+    left: 10px;
+  }
+  
+  .search button {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 80px;
+    background: grey;
+  }
+  
+  .container {
+    margin-bottom: 40px;
+  }
+
+  body {
+    background-color: ghostwhite;
+    display: flex; 
+    flex-direction: column; 
+    min-height: 100vh;
+}
+
+.pagina {
+    flex: 1;
+}
+
+h2 {
+    padding: 40px 0px;
+}
+
+.cuenta-usuario {
+  float:right;
+  color: white;
+  display: flex;
+  margin-top: 15px;
+}
+
+.mensaje-error{
+  color: red;
+}
+
+.producto-imagen {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.centered-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

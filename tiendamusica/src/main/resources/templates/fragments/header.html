@@ -1,0 +1,52 @@
+<header th:fragment="header">
+  <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <a class="navbar-brand" th:href="@{/inicio}">
+      Inicio
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="topNavbar">
+      <ul th:each="categoria : ${listaCategorias}" class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{'/producto/listaCategoria/' +  ${categoria.id}}">[[${categoria.nombre}]]</a>
+        </li>
+      </ul>
+    </div>
+    <div style="margin-right: 10px;">
+      <form th:action="@{/producto/busqueda}" method="get" class="navbar-search">
+        <input type="search" name="query" class="search-input" placeholder="Buscar productos..." required>
+        <button type="submit" class="search-button">Buscar</button>
+      </form>
+    </div>
+    <div class="d-flex align-items-center">
+      <a class="nav-link" th:href="@{'/producto/verCarrito'}" style="color:white"
+        sec:authorize="!hasRole('ROLE_ADMIN')">Carrito</a>&nbsp;&nbsp;&nbsp;
+
+      <a class="nav-link" th:href="@{'/seguro/pedidos'}" style="color:white">Pedidos</a>&nbsp;&nbsp;&nbsp;
+
+      <a class="nav-link" sec:authorize="!isAuthenticated()" th:href="@{'/login'}"
+        style="color:white">Login</a>&nbsp;&nbsp;&nbsp;
+
+      <a class="nav-link" sec:authorize="!isAuthenticated()" th:href="@{'/cliente/alta'}"
+        style="color:white">Alta</a>&nbsp;&nbsp;&nbsp;
+
+      <div sec:authorize="isAuthenticated()" style="color:white">Hola <span
+          sec:authentication="name"></span>&nbsp;&nbsp;&nbsp;</div>
+
+      <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{'/logout'}" style="color:white">Salir</a>
+    </div>
+
+
+    <!-- <div class="collapse navbar-collapse" id="topNavbar" sec:authorize="isAuthenticated()">
+
+      <div sec:authorize="hasRole('ROLE_USER')">
+
+      </div>
+      <div sec:authorize="hasRole('ROLE_ADMIN')">
+
+      </div>
+    </div> -->
+
+  </nav>
+</header>
